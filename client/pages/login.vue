@@ -1,27 +1,30 @@
 <template>
-    <div class="bg-red-700 h-screen">
-        <div>
+    <div>
+        <div class="flex items-center justify-center h-screen bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 p-8">
             <form @submit.prevent="submitForm()">
-                <div>
-                    <label for="email_address">Email Address</label>
+                <p class="text-center text-2xl font-bold">Login</p>
+                <div class="bg-black bg-opacity-20 p-10 rounded-3xl text-white shadow-2xl shadow-violet-700 space-y-6">
                     <div>
-                        <input type="email" name="email" placeholder="email address" v-model="state.user.email">
-                        <p>
-                            {{ state.errors && state.errors._data && state.errors._data.errors && state.errors._data.errors.email && state.errors._data.errors.email[0] }}
-                        </p>
+                        <label for="email_address">Email Address</label>
+                        <div>
+                            <input class="rounded p-1 text-violet-800 font-semibold" type="email" name="email" placeholder="email address" v-model="state.user.email">
+                            <p class="text-red-700">
+                                {{ state.errors && state.errors._data && state.errors._data.errors && state.errors._data.errors.email && state.errors._data.errors.email[0] }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label for="password">Password</label>
                     <div>
-                        <input type="password" name="password" placeholder="password" v-model="state.user.password">
-                        <p>
-                            {{ state.errors && state.errors._data && state.errors._data.errors && state.errors._data.errors.password && state.errors._data.errors.password[0] }}
-                        </p>
+                        <label for="password">Password</label>
+                        <div>
+                            <input class="rounded p-1 text-violet-800 font-semibold" type="password" name="password" placeholder="password" v-model="state.user.password">
+                            <p class="text-red-700">
+                                {{ state.errors && state.errors._data && state.errors._data.errors && state.errors._data.errors.password && state.errors._data.errors.password[0] }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <button type="submit">Log in</button>
+                    <div>
+                        <button type="submit">Log in</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -50,7 +53,7 @@ async function submitForm(){
         })
 
         if (response.data) {
-            localstorage.setItem('_token', response.data.token)
+            localStorage.setItem('_token', response.data.token)
             navigateTo('/users')
         }
     } catch (error) {
