@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div class="flex items-center justify-center h-screen bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+        <div class="flex items-center justify-center h-screen bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 p-8">
             <form @submit.prevent="submitForm()">
-                <p class="text-center text-2xl font-bold">Login</p>
+                <p class="text-center text-2xl font-bold">Sign Up</p>
                 <div class="bg-black bg-opacity-10 p-10 rounded-3xl text-black shadow-2xl shadow-violet-700 space-y-6">
                     <div>
                         <label for="email_address">Email Address</label>
                         <div>
-                            <input class="rounded p-1 text-violet-800 font-semibold" type="email" name="email" placeholder="email" v-model="state.user.email">
+                            <input class="rounded p-1 text-violet-800 font-semibold" type="email" name="email" placeholder="email address" v-model="state.user.email">
                             <p class="text-red-700">
                                 {{ state.errors && state.errors._data && state.errors._data.errors && state.errors._data.errors.email && state.errors._data.errors.email[0] }}
                             </p>
