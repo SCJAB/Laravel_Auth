@@ -5,6 +5,15 @@
                 <p class="text-center text-2xl font-bold">Sign Up</p>
                 <div class="bg-black bg-opacity-10 p-10 rounded-3xl text-black shadow-2xl shadow-violet-700 space-y-6">
                     <div>
+                        <label for="name">Name</label>
+                        <div>
+                            <input class="rounded p-1 text-violet-800 font-semibold" type="text" name="name" placeholder="name" v-model="state.user.name">
+                            <p class="text-red-700">
+                                {{ state.errors && state.errors._data && state.errors._data.errors && state.errors._data.errors.email && state.errors._data.errors.email[0] }}
+                            </p>
+                        </div>
+                    </div>
+                    <div>
                         <label for="email_address">Email Address</label>
                         <div>
                             <input class="rounded p-1 text-violet-800 font-semibold" type="email" name="email" placeholder="email address" v-model="state.user.email">
@@ -37,6 +46,7 @@ const state = reactive({
     errors: null,
     isPageLoading: false,
     user: {
+        name: null,
         email: null,
         password: null,
     }
@@ -44,6 +54,7 @@ const state = reactive({
 
 async function submitForm(){
     const params = {
+        name: state.user.name,
         email: state.user.email,
         password: state.user.password,
     } 
