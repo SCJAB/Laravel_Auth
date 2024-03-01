@@ -27,6 +27,9 @@
                         <button type="submit">Submit</button>
                     </div>
                 </div>
+                <div class="mt-5 flex justify-center underline" >
+                    <button type="button" @click="goToRegister">Create Account</button>
+                </div>
             </form>
         </div>
     </div>
@@ -66,6 +69,10 @@ async function submitForm(){
 function goBack() {
   console.log('Going back...');
   navigateTo('/');
+}
+
+function goToRegister() {
+  navigateTo('/register');
 }
 </script>
 

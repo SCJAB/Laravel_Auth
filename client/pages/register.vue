@@ -36,6 +36,9 @@
                         <button type="submit">Submit</button>
                     </div>
                 </div>
+                <div class="mt-5 flex justify-center underline" >
+                    <button type="button" @click="goToLogin">Already have an Account?</button>
+                </div>
             </form>
         </div>
     </div>
@@ -59,14 +62,14 @@ async function submitForm(){
         password: state.user.password,
     } 
     try {
-        const response = await $fetch (`http://127.0.0.1:8000/api/auth/login`, {
+        const response = await $fetch (`http://127.0.0.1:8000/api/auth/register`, {
             method: 'POST',
             body: params
         })
 
         if (response.data) {
             localStorage.setItem('_token', response.data.token)
-            navigateTo('/users')
+            navigateTo('/login')
         }
     } catch (error) {
         state.errors = error.response
@@ -77,6 +80,10 @@ async function submitForm(){
 function goBack() {
   console.log('Going back...');
   navigateTo('/');
+}
+
+function goToLogin() {
+  navigateTo('/login');
 }
 </script>
 
